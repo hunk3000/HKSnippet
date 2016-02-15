@@ -2,6 +2,7 @@
 
 HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
+![Demo](https://github.com/hunk3000/HKSnippet/blob/master/Images/demo.gif?raw=true)
 
 # Property
 * ###Strong
