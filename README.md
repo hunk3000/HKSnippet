@@ -16,16 +16,14 @@
 
 - The recommanded way to install HKSnippet is to use [Alcatraz](http://alcatraz.io/). Install Alcatraz followed by the instruction, restart your Xcode. You can find `HKSnippet` in the list. Just click the install button.
 
- - another way is to clone this repo, Build the project and it's done!
+- another way is to clone this repo, Build the project and it's done!
 
- - or you can also download from [this link](http://exibitioncenter-data.stor.sinaapp.com/download%2FHKSnippet.xcplugin.zip) and move the plugin to path  
+- or you can also download from [this link](http://exibitioncenter-data.stor.sinaapp.com/download%2FHKSnippet.xcplugin.zip) and move the plugin to path  
  `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`  
  then restart Xcode
 
 ## Usage
 
-
-```
 This plug-in is very easy to use. By typing the trigger string , you will get the corresponding snippet.
 
 for example , you want to write a property with noatomic and strong, you can type **@pns**
@@ -33,7 +31,6 @@ for example , you want to write a property with noatomic and strong, you can typ
 
 @property (noatomic, strong) <#type#> *<#name#>
 
-```
 
 ##### Pre-defined triggers and snippet
 
