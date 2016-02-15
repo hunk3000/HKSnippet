@@ -1,6 +1,6 @@
 # HKSnippet - Xcode plug-in
 
-** HKSnippet is a xcode plug-in for creating code snippet with triggers strings.**
+HKSnippet is a xcode plug-in for creating code snippet with triggers strings.
 
 ![Demo](Images/demo.gif)
 
@@ -32,7 +32,7 @@ for example , you want to write a property with noatomic and strong, you can typ
 @property (noatomic, strong) <#type#> *<#name#>
 
 
-##### Pre-defined triggers and snippet
+The belowing part is pre-defined triggers and snippet :
 
 * Strong
 
