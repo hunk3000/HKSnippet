@@ -49,6 +49,16 @@ NSString * const kHKSnippetEnabled = @"enabled";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)resetToDefaultSetting {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHKSnippetsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    _snippets = nil;
+    _snippets = [NSMutableDictionary dictionaryWithDictionary:[self defaultConfig]];
+    [[NSUserDefaults standardUserDefaults] setObject:[self defaultConfig] forKey:kHKSnippetsKey];
+    [self setEnabled:YES];
+}
+
 - (NSDictionary *)defaultConfig {
     NSDictionary *config = [[NSUserDefaults standardUserDefaults] objectForKey:kHKSnippetsKey];
     if (config.count > 0) {

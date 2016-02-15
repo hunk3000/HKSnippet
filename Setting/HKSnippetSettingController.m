@@ -47,8 +47,9 @@
 }
 
 - (IBAction)btnResetPressed:(NSButton *)sender {
-    [[HKSnippetSetting defaultSetting] setEnabled:YES];
+    [[HKSnippetSetting defaultSetting] resetToDefaultSetting];
     self.btnEnabled.state = (NSCellStateValue)[[HKSnippetSetting defaultSetting] enabled];
+    [self reloadData];
 }
 
 - (IBAction)exportSnippets:(id)sender {

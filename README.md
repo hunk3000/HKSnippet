@@ -1,15 +1,43 @@
-# HKSnippet
+# HKSnippet - Xcode plug-in
 
-HKSnippet is a xcode plug-in for create code snippet with triggers strings.
+** HKSnippet is a xcode plug-in for creating code snippet with triggers strings.**
 
-![Demo](https://github.com/hunk3000/HKSnippet/blob/master/Images/demo.gif?raw=true)
-
-![Setting1](https://github.com/hunk3000/HKSnippet/blob/master/Images/setting1.png?raw=true)
-
-![Setting2](https://github.com/hunk3000/HKSnippet/blob/master/Images/setting2.png?raw=true)
+![Demo](Images/demo.gif)
 
 
-* ###Strong
+## What Can it do ?
+ - minimize input for often used code snippet.
+ - define your own trigger & snippet.
+ - export & import your customized snippet to and from config file.
+ - support undo - redo operation.
+
+
+## Install
+
+- The recommanded way to install HKSnippet is to use [Alcatraz](http://alcatraz.io/). Install Alcatraz followed by the instruction, restart your Xcode. You can find `HKSnippet` in the list. Just click the install button.
+
+ - another way is to clone this repo, Build the project and it's done!
+
+ - or you can also download from [this link](http://exibitioncenter-data.stor.sinaapp.com/download%2FHKSnippet.xcplugin.zip) and move the plugin to path  
+ `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`  
+ then restart Xcode
+
+## Usage
+
+
+```
+This plug-in is very easy to use. By typing the trigger string , you will get the corresponding snippet.
+
+for example , you want to write a property with noatomic and strong, you can type **@pns**
+ , and you will get 
+
+@property (noatomic, strong) <#type#> *<#name#>
+
+```
+
+##### Pre-defined triggers and snippet
+
+* Strong
 
 ```
 @ps 	@property (strong) type *value; 
@@ -23,7 +51,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ###Weak
+* Weak
 
 ```
 @pw 	@property (weak) type *value; 
@@ -36,7 +64,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ###Copy
+* Copy
 
 ```
 @pc 	@property (copy) type *value; 
@@ -49,7 +77,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ###Assign
+* Assign
 
 ```
 @pa 	@property (assign) type *value; 
@@ -61,7 +89,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 @prna	@property (nonatomic, assign, readonly) type *value;
 
 ```
-* ### @ff - General Getter 
+* @ff - General Getter 
 
 ```
 @ff 	
@@ -77,7 +105,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 
 
-* ### @fv - UIView Getter 
+* @fv - UIView Getter 
 
 ```
  @fv
@@ -92,7 +120,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @fl - UILabel Getter
+* @fl - UILabel Getter
 
 ```
 @fl	
@@ -112,7 +140,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @fi - UIImageView Getter
+* @fi - UIImageView Getter
 
 ```
 @fi
@@ -130,7 +158,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @fb - UIButton Getter
+* @fb - UIButton Getter
 
 ```
 @fb
@@ -150,7 +178,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @ft - UITableView Getter
+* @ft - UITableView Getter
 
 ```
 @ft
@@ -172,7 +200,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### Declear
+* Declear
 
 ```
 @cs		static NSString * const name = @\"value\";
@@ -193,7 +221,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @lv - LoadView
+* @lv - LoadView
 
 ```
 @lv
@@ -204,7 +232,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @ls - Layout Subviews
+* @ls - Layout Subviews
 
 ```
 @ls
@@ -218,7 +246,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @vl - ViewWillLayoutSubviews
+* @vl - ViewWillLayoutSubviews
 
 ```
 @vl
@@ -232,7 +260,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @init - Initialization
+* @init - Initialization
 
 ```
 @init
@@ -247,7 +275,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @de - De-Init
+* @de - De-Init
 
 ```
 @de
@@ -258,7 +286,7 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
-* ### @table -  UITableView Delegate & Datasource
+* @table -  UITableView Delegate & Datasource
 
 ```
 @table
@@ -287,4 +315,17 @@ HKSnippet is a xcode plug-in for create code snippet with triggers strings.
 
 ```
 
+## Setting
+After the install of the plug-in ,you will find the menu in the top "Plugins -> HKSnippet", Click that menu, you can see the belowing pannel where you can define your own triggers or edit the existing triggers & snippets.
 
+You can alse export your trigger & sniippet to a configuration file which can be use to share with others. 
+
+![Setting1](Images/setting1.png)
+
+![Setting1](Images/setting2.png)
+
+
+
+## LICENCE
+
+HKSnippet is available under the MIT license. See the LICENSE file for more info.
