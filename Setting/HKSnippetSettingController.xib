@@ -9,13 +9,14 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HKSnippetSettingController">
             <connections>
                 <outlet property="btnEnabled" destination="1Uq-Te-ztA" id="PI1-wa-kqS"/>
+                <outlet property="searchField" destination="OUs-G5-iUq" id="2oP-VF-Qlm"/>
                 <outlet property="tableView" destination="Dn5-30-dwd" id="50v-Dq-1W9"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="HKSnippet Setting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="986" height="439"/>
@@ -24,19 +25,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="986" height="439"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1Uq-Te-ztA">
-                        <rect key="frame" x="35" y="407" width="107" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="103" id="tVN-3Z-gEd"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3do-Eg-mlX">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="btnEnabledPressed:" target="-2" id="Iww-VU-uJU"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Et5-r9-heH">
                         <rect key="frame" x="849" y="398" width="123" height="32"/>
                         <constraints>
@@ -57,7 +45,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="KCp-cf-Vku" id="Dn5-30-dwd">
-                                    <rect key="frame" x="5" y="0.0" width="944" height="312"/>
+                                    <rect key="frame" x="6" y="0.0" width="944" height="312"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -104,7 +92,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="KCp-cf-Vku">
-                            <rect key="frame" x="5" y="0.0" width="944" height="23"/>
+                            <rect key="frame" x="7" y="0.0" width="944" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -173,16 +161,44 @@
                             <action selector="importSnippets:" target="-2" id="Zo1-oM-43J"/>
                         </connections>
                     </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1Uq-Te-ztA">
+                        <rect key="frame" x="742" y="406" width="107" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="103" id="Jlp-p1-PeU"/>
+                        </constraints>
+                        <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3do-Eg-mlX">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="btnEnabledPressed:" target="-2" id="Iww-VU-uJU"/>
+                        </connections>
+                    </button>
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUs-G5-iUq">
+                        <rect key="frame" x="20" y="400" width="204" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="204" id="QwY-cX-B3E"/>
+                        </constraints>
+                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Find Trigger" usesSingleLineMode="YES" bezelStyle="round" id="JLw-OE-qqr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </searchFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="nJ7-Kf-Lhx"/>
+                        </connections>
+                    </searchField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fzk-E0-xaU" firstAttribute="baseline" secondItem="sdr-B4-JAC" secondAttribute="baseline" id="5b0-rL-9UL"/>
                     <constraint firstItem="hHD-MV-lbN" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="7qT-Gq-qQv"/>
                     <constraint firstItem="bny-d0-hU4" firstAttribute="bottom" secondItem="FcS-t7-E58" secondAttribute="bottom" id="B8n-EE-VWu"/>
                     <constraint firstItem="vkg-aS-Bsi" firstAttribute="top" secondItem="hHD-MV-lbN" secondAttribute="bottom" constant="9" id="DFJ-Us-Qu9"/>
-                    <constraint firstItem="1Uq-Te-ztA" firstAttribute="baseline" secondItem="Et5-r9-heH" secondAttribute="baseline" id="Gz9-vf-ZGF"/>
                     <constraint firstItem="fzk-E0-xaU" firstAttribute="firstBaseline" secondItem="bny-d0-hU4" secondAttribute="baseline" id="I63-VN-MCA"/>
                     <constraint firstItem="hHD-MV-lbN" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="57" id="Nl8-mz-jBw"/>
+                    <constraint firstItem="1Uq-Te-ztA" firstAttribute="centerY" secondItem="Et5-r9-heH" secondAttribute="centerY" id="NwY-RF-Iea"/>
                     <constraint firstItem="bny-d0-hU4" firstAttribute="top" secondItem="hHD-MV-lbN" secondAttribute="bottom" constant="11" id="Pc3-0k-1Ue"/>
+                    <constraint firstItem="OUs-G5-iUq" firstAttribute="top" secondItem="1Uq-Te-ztA" secondAttribute="top" id="QiL-Go-9T5"/>
                     <constraint firstItem="sdr-B4-JAC" firstAttribute="leading" secondItem="fzk-E0-xaU" secondAttribute="trailing" constant="8" symbolic="YES" id="Rw1-KA-hcT"/>
                     <constraint firstItem="FcS-t7-E58" firstAttribute="bottom" secondItem="vkg-aS-Bsi" secondAttribute="bottom" id="S7r-a2-B4C"/>
                     <constraint firstAttribute="trailing" secondItem="fzk-E0-xaU" secondAttribute="trailing" constant="93" id="T7a-d4-chM"/>
@@ -194,9 +210,10 @@
                     <constraint firstAttribute="bottom" secondItem="fzk-E0-xaU" secondAttribute="bottom" constant="12" id="gTx-Gd-g5q"/>
                     <constraint firstItem="FcS-t7-E58" firstAttribute="leading" secondItem="vkg-aS-Bsi" secondAttribute="trailing" constant="10" symbolic="YES" id="iMR-UE-6Zn"/>
                     <constraint firstItem="bny-d0-hU4" firstAttribute="baseline" secondItem="sdr-B4-JAC" secondAttribute="firstBaseline" id="jhn-it-mq2"/>
+                    <constraint firstItem="OUs-G5-iUq" firstAttribute="leading" secondItem="hHD-MV-lbN" secondAttribute="leading" id="oQ5-58-AIo"/>
                     <constraint firstItem="bny-d0-hU4" firstAttribute="leading" secondItem="FcS-t7-E58" secondAttribute="trailing" constant="8" symbolic="YES" id="pCZ-j3-naM"/>
                     <constraint firstItem="Et5-r9-heH" firstAttribute="trailing" secondItem="hHD-MV-lbN" secondAttribute="trailing" id="uj7-oK-geh"/>
-                    <constraint firstItem="1Uq-Te-ztA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="37" id="wDn-2I-MlO"/>
+                    <constraint firstItem="Et5-r9-heH" firstAttribute="leading" secondItem="1Uq-Te-ztA" secondAttribute="trailing" constant="8" symbolic="YES" id="xC5-pe-PPD"/>
                     <constraint firstItem="hHD-MV-lbN" firstAttribute="top" secondItem="Et5-r9-heH" secondAttribute="bottom" constant="23" id="xCv-eG-jRe"/>
                 </constraints>
             </view>

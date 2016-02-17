@@ -109,6 +109,10 @@ static HKSnippet *sharedPlugin;
             // make sure the undo function is working fine.
             NSUndoManager *undoManager = [textView undoManager];
             [undoManager disableUndoRegistration];
+            
+            // save pasteboard string for restore
+            NSString *oldPasteString = [[self class] getPasteboardString];
+            
             [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - length, length)];
             [[self class] setPasteboardString:@""];
             [textView cut:self];
@@ -116,6 +120,10 @@ static HKSnippet *sharedPlugin;
             [undoManager enableUndoRegistration];
             [[self class] setPasteboardString:[HKSnippetSetting defaultSetting].snippets[currentLineResult.string]];
             [textView paste:self];
+            
+            if (oldPasteString) {
+                [[self class] setPasteboardString:oldPasteString];
+            }
         }
     }
 }
@@ -152,8 +160,14 @@ static HKSnippet *sharedPlugin;
     [thePasteboard setString:aString forType:NSStringPboardType];
 }
 
-
-
-
++ (NSString *)getPasteboardString {
+    NSString *retValue = nil;
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSArray *types = [pasteboard types];
+    if ([types containsObject:NSStringPboardType]) {
+        retValue = [pasteboard stringForType:NSStringPboardType];
+    }
+    return retValue;
+}
 
 @end

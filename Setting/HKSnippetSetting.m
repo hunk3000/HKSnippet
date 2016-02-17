@@ -252,7 +252,7 @@ NSString * const kHKSnippetEnabled = @"enabled";
     <# set subview frames #>\n\
 }",
 
-@"@table" :
+@"@tdd" :
 @"#pragma mark - UITableViewDataSource\n\
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {\n\
     return <#rows#>;\n\

@@ -283,10 +283,10 @@ The belowing part is pre-defined triggers and snippet :
 
 ```
 
-* @table -  UITableView Delegate & Datasource
+* @tdd -  UITableView Delegate & Datasource
 
 ```
-@table
+@tdd
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
