@@ -319,8 +319,12 @@ You can alse export your trigger & sniippet to a configuration file which can be
 
 ![Setting1](Images/setting1.png)
 
-![Setting1](Images/setting2.png)
 
+You can search snippet with trigger
+![Setting2](Images/setting2.png)
+
+Edit the snippet 
+![Setting3](Images/setting3.png)
 
 
 ## LICENCE
