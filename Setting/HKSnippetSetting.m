@@ -16,6 +16,31 @@ NSString * const kHKSnippetEnabled = @"enabled";
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _systemTriggers = @[@"@autoreleasepool",
+                            @"@catch",
+                            @"@class",
+                            @"@compatibility_alias",
+                            @"@defs",
+                            @"@dynamic",
+                            @"@encode",
+                            @"@end",
+                            @"@finally",
+                            @"@import",
+                            @"@interface",
+                            @"@implementation",
+                            @"@optional",
+                            @"@package",
+                            @"@private",
+                            @"@property",
+                            @"@protected",
+                            @"@protocol",
+                            @"@public",
+                            @"@required",
+                            @"@selector",
+                            @"@synchronized",
+                            @"@synthesize",
+                            @"@throw"
+                            ];
         _snippets = [NSMutableDictionary dictionaryWithDictionary:[self defaultConfig]];
     }
     return self;

@@ -128,9 +128,12 @@
 
     __weak typeof(self) weakSelf = self;
     self.snippetEditViewController.saveBlock = ^(NSString *oldTrigger, NSString *newTrigger, NSString *snippet) {
+        // Check trigger length
         if (newTrigger.length < 2) {
+            [weakSelf showErrorAlertWithMessage:@"Trigger is too short, 2 characters at least."];
             return;
         }
+        // trigger string changed, remove old trigger
         if (![oldTrigger isEqualToString:newTrigger]) {
             [[HKSnippetSetting defaultSetting].snippets removeObjectForKey:oldTrigger];
         }

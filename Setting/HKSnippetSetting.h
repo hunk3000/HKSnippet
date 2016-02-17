@@ -14,6 +14,7 @@ extern NSString *const kHKSnippetsKey;
 
 @property (nonatomic, assign) BOOL enabled;
 @property (nonatomic, strong) NSMutableDictionary *snippets;
+@property (nonatomic, strong) NSArray *systemTriggers;
 
 + (HKSnippetSetting *)defaultSetting;
 - (void)sychronizeSetting;
