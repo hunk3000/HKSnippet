@@ -22,16 +22,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="723" height="416"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
                         <rect key="frame" x="0.0" y="0.0" width="723" height="416"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1D-mW-jzb">
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1D-mW-jzb">
                                 <rect key="frame" x="105" y="46" width="598" height="279"/>
-                                <clipView key="contentView" ambiguous="YES" id="AiQ-vj-fzl">
+                                <clipView key="contentView" id="AiQ-vj-fzl">
                                     <rect key="frame" x="1" y="1" width="581" height="277"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="upa-hf-TlM">
+                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="upa-hf-TlM">
                                             <rect key="frame" x="0.0" y="0.0" width="581" height="277"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,8 +77,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZ9-zO-WtA">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LZ9-zO-WtA">
                                 <rect key="frame" x="623" y="13" width="80" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="fUS-Xp-JLV"/>
+                                </constraints>
                                 <buttonCell key="cell" type="roundRect" title="保存" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vzE-qs-HmD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -87,8 +90,11 @@
                                     <action selector="saveSnippet:" target="-2" id="Bnp-5O-V1y"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHi-z7-25j">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zHi-z7-25j">
                                 <rect key="frame" x="529" y="13" width="80" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ref-L0-dmy"/>
+                                </constraints>
                                 <buttonCell key="cell" type="roundRect" title="取消" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mFv-jx-DIw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -106,8 +112,24 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="v1D-mW-jzb" secondAttribute="trailing" constant="20" id="DDW-rS-Z3f"/>
+                            <constraint firstItem="zHi-z7-25j" firstAttribute="top" secondItem="v1D-mW-jzb" secondAttribute="bottom" constant="14" id="JuK-7J-gcb"/>
+                            <constraint firstAttribute="bottom" secondItem="v1D-mW-jzb" secondAttribute="bottom" constant="46" id="ObS-ZC-WiW"/>
+                            <constraint firstItem="LZ9-zO-WtA" firstAttribute="leading" secondItem="zHi-z7-25j" secondAttribute="trailing" constant="14" id="P0c-xq-6oU"/>
+                            <constraint firstItem="v1D-mW-jzb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="VRE-fh-kAN"/>
+                            <constraint firstItem="zHi-z7-25j" firstAttribute="baseline" secondItem="LZ9-zO-WtA" secondAttribute="baseline" id="axH-DF-4fR"/>
+                            <constraint firstItem="v1D-mW-jzb" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="91" id="gWl-5l-Nrt"/>
+                            <constraint firstItem="LZ9-zO-WtA" firstAttribute="trailing" secondItem="v1D-mW-jzb" secondAttribute="trailing" id="uJh-7I-Zq0"/>
+                        </constraints>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Hz6-mo-xeY" secondAttribute="trailing" id="C0D-cd-0kg"/>
+                    <constraint firstAttribute="bottom" secondItem="Hz6-mo-xeY" secondAttribute="bottom" id="C3K-hZ-fTm"/>
+                    <constraint firstItem="Hz6-mo-xeY" firstAttribute="leading" secondItem="l0z-cW-kEQ" secondAttribute="leading" id="veG-o6-PBE"/>
+                    <constraint firstItem="Hz6-mo-xeY" firstAttribute="top" secondItem="l0z-cW-kEQ" secondAttribute="top" id="vg0-uO-nye"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="553.5" y="352"/>
         </window>

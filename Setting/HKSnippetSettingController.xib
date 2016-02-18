@@ -188,6 +188,16 @@
                             <outlet property="delegate" destination="-2" id="nJ7-Kf-Lhx"/>
                         </connections>
                     </searchField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99F-VD-JX8">
+                        <rect key="frame" x="226" y="394" width="133" height="32"/>
+                        <buttonCell key="cell" type="push" title="Check Triggers" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CS7-tm-eF6">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkTriggers:" target="-2" id="hTR-9o-K3G"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fzk-E0-xaU" firstAttribute="baseline" secondItem="sdr-B4-JAC" secondAttribute="baseline" id="5b0-rL-9UL"/>

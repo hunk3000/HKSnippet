@@ -91,6 +91,20 @@
                                           sender:sender];
 }
 
+- (IBAction)checkTriggers:(id)sender {
+    NSMutableArray *conflictMessages = [NSMutableArray array];
+
+    // Check trigger conflict with system keyword
+    for (NSString *trigger in _listOfKeys) {
+        for (NSString *sysTrigger in [HKSnippetSetting defaultSetting].systemTriggers) {
+            if ([sysTrigger containsString:trigger]) {
+                [conflictMessages addObject:[NSString stringWithFormat:@"%@ conflict with %@", trigger, sysTrigger]];
+            }
+        }
+    }
+    [self showErrorAlertWithMessage:[conflictMessages description]];
+}
+
 #pragma mark - Private Method
 - (void)reloadDataWithKeyFilter:(NSString *)filter {
     NSArray *allKeys = [[HKSnippetSetting defaultSetting].snippets allKeys];
