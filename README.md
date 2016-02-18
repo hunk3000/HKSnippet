@@ -2,11 +2,12 @@
 
 HKSnippet is a xcode plug-in for creating code snippet with triggers strings.
 
-![Demo](Images/demo.gif)
+![Demo](Images/demo2.gif)
 
 
 ## What Can it do ?
  - minimize input for often used code snippet.
+ - Input code sinppet with paramters.
  - define your own trigger & snippet.
  - export & import your customized snippet to and from config file.
  - support undo - redo operation.
