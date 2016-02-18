@@ -7,7 +7,7 @@ HKSnippet is a xcode plug-in for creating code snippet with triggers strings.
 
 ## What Can it do ?
  - minimize input for often used code snippet.
- - Input code sinppet with paramters.
+ - Input code sinppet with paramters. ( NEW! )
  - define your own trigger & snippet.
  - export & import your customized snippet to and from config file.
  - support undo - redo operation.
@@ -31,7 +31,6 @@ for example , you want to write a property with noatomic and strong, you can typ
  , and you will get 
 
 @property (noatomic, strong) <#type#> *<#name#>
-
 
 The belowing part is pre-defined triggers and snippet :
 
@@ -311,6 +310,30 @@ The belowing part is pre-defined triggers and snippet :
 
 }
 
+```
+
+## Advanced
+You can even input a snippet with parameters, the format is as below:
+
+ **<parameter1,parameter2...>@triger**
+
+for example , you want to declare a property getter for a label named "usernameLabel", and the font for the label is [UIFont systemFontOfSize:12.0f], you can type
+
+usernameLabel,[UIFont systemFontOfSize:12.0f]@fl , and then the magic happens, you will got below code:
+
+```
+- (UILabel *)usernameLabel {
+    if(!_usernameLabel) {
+        _usernameLabel = [UILabel new];
+        _usernameLabel.backgroundColor = [UIColor clearColor];
+        _usernameLabel.textAlignment = NSTextAlignmentCenter;
+        _usernameLabel.numberOfLines = 0;
+        _usernameLabel.textColor = <#color#>;
+        _usernameLabel.font = [UIFont systemFontOfSize:12.0f];
+        _usernameLabel.text = <#text#>;
+    }
+    return _usernameLabel;
+}
 ```
 
 ## Setting
