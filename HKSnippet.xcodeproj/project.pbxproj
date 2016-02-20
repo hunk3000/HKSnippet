@@ -16,6 +16,7 @@
 		18BA9E501B16ACB300F471AF /* HKSnippetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9E4F1B16ACB300F471AF /* HKSnippetSetting.m */; };
 		B40AE1641C708030004CE9B9 /* HKSnippetEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40AE1621C708030004CE9B9 /* HKSnippetEditViewController.m */; };
 		B40AE1651C708030004CE9B9 /* HKSnippetEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40AE1631C708030004CE9B9 /* HKSnippetEditViewController.xib */; };
+		B4971C731C78C1D600B80D96 /* VVKeyboardEventSender.m in Sources */ = {isa = PBXBuildFile; fileRef = B4971C721C78C1D600B80D96 /* VVKeyboardEventSender.m */; };
 		B4CB74411C7057C60093E911 /* NSString+Snippet.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB743E1C7057C60093E911 /* NSString+Snippet.m */; };
 		B4CB74421C7057C60093E911 /* NSTextView+Snippet.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB74401C7057C60093E911 /* NSTextView+Snippet.m */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,8 @@
 		B40AE1611C708030004CE9B9 /* HKSnippetEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSnippetEditViewController.h; sourceTree = "<group>"; };
 		B40AE1621C708030004CE9B9 /* HKSnippetEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSnippetEditViewController.m; sourceTree = "<group>"; };
 		B40AE1631C708030004CE9B9 /* HKSnippetEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HKSnippetEditViewController.xib; sourceTree = "<group>"; };
+		B4971C711C78C1D600B80D96 /* VVKeyboardEventSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVKeyboardEventSender.h; sourceTree = "<group>"; };
+		B4971C721C78C1D600B80D96 /* VVKeyboardEventSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVKeyboardEventSender.m; sourceTree = "<group>"; };
 		B4CB743D1C7057C60093E911 /* NSString+Snippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Snippet.h"; sourceTree = "<group>"; };
 		B4CB743E1C7057C60093E911 /* NSString+Snippet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Snippet.m"; sourceTree = "<group>"; };
 		B4CB743F1C7057C60093E911 /* NSTextView+Snippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+Snippet.h"; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 		18194CBC1B16A0AE007A3FB0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B4971C711C78C1D600B80D96 /* VVKeyboardEventSender.h */,
+				B4971C721C78C1D600B80D96 /* VVKeyboardEventSender.m */,
 				B4CB743D1C7057C60093E911 /* NSString+Snippet.h */,
 				B4CB743E1C7057C60093E911 /* NSString+Snippet.m */,
 				B4CB743F1C7057C60093E911 /* NSTextView+Snippet.h */,
@@ -201,6 +206,7 @@
 			files = (
 				18BA9E501B16ACB300F471AF /* HKSnippetSetting.m in Sources */,
 				B4CB74411C7057C60093E911 /* NSString+Snippet.m in Sources */,
+				B4971C731C78C1D600B80D96 /* VVKeyboardEventSender.m in Sources */,
 				B4CB74421C7057C60093E911 /* NSTextView+Snippet.m in Sources */,
 				B40AE1641C708030004CE9B9 /* HKSnippetEditViewController.m in Sources */,
 				18B907F41B16F086009033BF /* HKSnippetSettingController.m in Sources */,

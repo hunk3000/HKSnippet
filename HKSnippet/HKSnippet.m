@@ -11,6 +11,7 @@
 #import "HKSnippetSetting.h"
 #import "NSTextView+Snippet.h"
 #import "HKSnippetSettingController.h"
+#import "VVKeyboardEventSender.h"
 
 static HKSnippet *sharedPlugin;
 
@@ -18,6 +19,8 @@ static HKSnippet *sharedPlugin;
 
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic, strong) HKSnippetSettingController *settingWindow;
+@property (nonatomic, strong) id eventMonitor;
+@property (nonatomic, assign) BOOL shouldReplace;
 
 @end
 
@@ -41,6 +44,7 @@ static HKSnippet *sharedPlugin;
 - (id)initWithBundle:(NSBundle *)plugin {
     if (self = [super init]) {
         self.bundle = plugin;
+        self.shouldReplace = YES;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(textStorageDidChange:)
                                                      name:NSTextDidChangeNotification
@@ -81,10 +85,10 @@ static HKSnippet *sharedPlugin;
         if ([cmdString hasPrefix:@"@"]) {
             // replacement snippet exist
             if ([HKSnippetSetting defaultSetting].snippets[cmdString]) {
-                [HKSnippet pasteSnippet:[HKSnippetSetting defaultSetting].snippets[cmdString]
-                        byTriggerString:cmdString
-                             toTextView:textView
-                         withParameters:nil];
+                [self pasteSnippet:[HKSnippetSetting defaultSetting].snippets[cmdString]
+                   byTriggerString:cmdString
+                        toTextView:textView
+                    withParameters:nil];
             }
         } else {
             // Get parameters
@@ -95,10 +99,10 @@ static HKSnippet *sharedPlugin;
                 NSArray *parameters = [parameterString componentsSeparatedByString:@","];
                 NSString *snippet = [HKSnippetSetting defaultSetting].snippets[triggerString];
                 if (snippet) {
-                    [HKSnippet pasteSnippet:[HKSnippet replacedSnippet:snippet withParameters:parameters]
-                            byTriggerString:cmdString
-                                 toTextView:textView
-                             withParameters:parameters];
+                    [self pasteSnippet:[HKSnippet replacedSnippet:snippet withParameters:parameters]
+                       byTriggerString:cmdString
+                            toTextView:textView
+                        withParameters:parameters];
                 }
             }
         }
@@ -147,31 +151,74 @@ static HKSnippet *sharedPlugin;
     return retValue;
 }
 
-+ (void)pasteSnippet:(NSString *)snippet
+- (void)resetShouldReplace {
+    self.shouldReplace = YES;
+}
+
+- (void)pasteSnippet:(NSString *)snippet
      byTriggerString:(NSString *)triggerString
           toTextView:(NSTextView *)textView
       withParameters:(NSArray *)parameters {
     
+    if (!self.shouldReplace) {
+        [self resetShouldReplace];
+        return;
+    }
+
     NSUInteger length = triggerString.length;
-    
-    // make sure the undo function is working fine.
-    NSUndoManager *undoManager = [textView undoManager];
-    [undoManager disableUndoRegistration];
-    
     // save pasteboard string for restore
     NSString *oldPasteString = [HKSnippet getPasteboardString];
+    [HKSnippet setPasteboardString:snippet];
     
     [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - length, length)];
-    [HKSnippet setPasteboardString:@""];
-    [textView cut:self];
+
+    //Begin to simulate keyborad pressing
+    VVKeyboardEventSender *kes = [[VVKeyboardEventSender alloc] init];
+    [kes beginKeyBoradEvents];
     
-    [undoManager enableUndoRegistration];
-    [HKSnippet setPasteboardString:snippet];
-    [textView paste:self];
+    //Cmd+delete Delete current line
+    [kes sendKeyCode:kVK_Delete withModifierCommand:YES alt:NO shift:NO control:NO];
+
+    //Cmd+V, paste (which key to actually use is based on the current keyboard layout)
+    NSInteger kKeyVCode = [kes keyVCode];
+    [kes sendKeyCode:kKeyVCode withModifierCommand:YES alt:NO shift:NO control:NO];
     
-    if (oldPasteString) {
-        [HKSnippet setPasteboardString:oldPasteString];
-    }
+    //The key down is just a defined finish signal by me. When we receive this key,
+    //we know operation above is finished.
+    [kes sendKeyCode:kVK_F19];
+    
+    __weak typeof(self) weakSelf = self;
+    self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
+                                                              handler:^ NSEvent *(NSEvent *incomingEvent) {
+        if ([incomingEvent type] == NSKeyDown &&
+            [incomingEvent keyCode] == kVK_F19) {
+            //Finish signal arrived, no need to observe the event
+            [NSEvent removeMonitor:weakSelf.eventMonitor];
+            weakSelf.eventMonitor = nil;
+            
+            //Restore previois patse board content
+            if (oldPasteString) {
+                [HKSnippet setPasteboardString:oldPasteString];
+            }
+            
+            //Set cursor before the inserted snippet. So we can use tab to begin edit.
+            int snippetLength = (int)snippet.length;
+            [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - snippetLength, 0)];
+            
+            //Send a 'tab' after insert the snippet. For our lazy programmers. :-)
+            [kes sendKeyCode:kVK_Tab];
+            [kes endKeyBoradEvents];
+
+            weakSelf.shouldReplace = NO;
+            //Invalidate the finish signal, in case you set it to do some other thing.
+            return nil;
+        } else {
+            return incomingEvent;
+        }
+    }];
+    [self performSelector:@selector(resetShouldReplace)
+               withObject:nil
+               afterDelay:5.0f];
 }
 
 + (NSString *)replacedSnippet:(NSString *)orgSnippet

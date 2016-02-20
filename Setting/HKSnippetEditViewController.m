@@ -43,8 +43,8 @@
     
     if (self.saveBlock) {
         self.saveBlock(_triggerString,
-                           _triggerTextField.stringValue,
-                           _snippetTextView.textStorage.string);
+                       _triggerTextField.stringValue,
+                       _snippetTextView.textStorage.string);
     }
     [self close];
 }

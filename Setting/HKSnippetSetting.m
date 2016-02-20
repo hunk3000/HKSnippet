@@ -304,5 +304,4 @@ NSString * const kHKSnippetEnabled = @"enabled";
     return config;
 }
 
-
 @end
