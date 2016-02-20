@@ -23,6 +23,7 @@
 
 @implementation HKSnippetSettingController
 
+#pragma mark - LifeCycle
 - (void)awakeFromNib {
     [super awakeFromNib];
     _listOfKeys = [NSMutableArray array];
@@ -33,9 +34,11 @@
     [super windowDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchField.delegate = self;
     self.btnEnabled.state = (NSCellStateValue)[[HKSnippetSetting defaultSetting] enabled];
 }
 
+#pragma mark - UI Action
 - (IBAction)btnEnabledPressed:(NSButton *)sender {
     [[HKSnippetSetting defaultSetting] setEnabled:sender.state];
 }
@@ -103,6 +106,14 @@
         }
     }
     [self showErrorAlertWithMessage:[conflictMessages description]];
+}
+- (IBAction)SearchTextFieldAction:(NSSearchField *)sender {
+    //NSLog(@"SearchTextFieldAction %@",sender);
+    if (sender.stringValue.length == 0) {
+        [self reloadDataWithKeyFilter:nil];
+    } else {
+        [self reloadDataWithKeyFilter:sender.stringValue];
+    }
 }
 
 #pragma mark - Private Method

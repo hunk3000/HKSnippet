@@ -20,5 +20,4 @@ extern NSString *const kHKSnippetsKey;
 - (void)sychronizeSetting;
 - (void)resetToDefaultSetting;
 
-
 @end
