@@ -10,7 +10,7 @@
 #import "HKSnippetSetting.h"
 #import "HKSnippetEditViewController.h"
 
-@interface HKSnippetSettingController ()<NSTableViewDataSource, NSTableViewDelegate, NSSearchFieldDelegate>
+@interface HKSnippetSettingController ()<NSTableViewDataSource, NSTableViewDelegate>
 
 @property (weak) IBOutlet NSButton *btnEnabled;
 @property (weak) IBOutlet NSTableView *tableView;
@@ -34,7 +34,6 @@
     [super windowDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.searchField.delegate = self;
     self.btnEnabled.state = (NSCellStateValue)[[HKSnippetSetting defaultSetting] enabled];
 }
 
@@ -213,17 +212,6 @@
         [[HKSnippetSetting defaultSetting] sychronizeSetting];
         [self reloadDataWithKeyFilter:nil];
     }
-}
-
-#pragma mark - NSSearchTextFieldDelegate
-- (void)searchFieldDidStartSearching:(NSSearchField *)sender {
-    NSLog(@"searchFieldDidStartSearching = %@",sender.stringValue);
-    [self reloadDataWithKeyFilter:sender.stringValue];
-}
-
-- (void)searchFieldDidEndSearching:(NSSearchField *)sender {
-    NSLog(@"searchFieldDidEndSearching = %@",sender.stringValue);
-    [self reloadDataWithKeyFilter:nil];
 }
 
 #pragma mark - NSTableView Datasource

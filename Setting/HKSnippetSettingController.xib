@@ -185,7 +185,6 @@
                         </searchFieldCell>
                         <connections>
                             <action selector="SearchTextFieldAction:" target="-2" id="DET-Gw-BdV"/>
-                            <outlet property="delegate" destination="-2" id="nJ7-Kf-Lhx"/>
                         </connections>
                     </searchField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99F-VD-JX8">
