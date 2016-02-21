@@ -76,6 +76,7 @@ NSString * const kHKSnippetEnabled = @"enabled";
 
 - (void)resetToDefaultSetting {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHKSnippetsKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@{} forKey:kHKSnippetsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     _snippets = nil;
@@ -89,8 +90,11 @@ NSString * const kHKSnippetEnabled = @"enabled";
     if (config.count > 0) {
         return config;
     }
-    NSString *default_snippet_file = [[NSBundle mainBundle] pathForResource:@"default_snippets"
-                                                                     ofType:@"plist"];
+
+    NSString *selfPath = @"~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/HKSnippet.xcplugin";
+    NSBundle *selfBundle = [NSBundle bundleWithPath:[selfPath stringByExpandingTildeInPath]];
+    NSString *default_snippet_file = [selfBundle pathForResource:@"default_snippets"
+                                                          ofType:@"plist"];
     config = [NSDictionary dictionaryWithContentsOfFile:default_snippet_file];
     return config;
 }
