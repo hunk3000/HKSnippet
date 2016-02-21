@@ -81,7 +81,7 @@ static HKSnippet *sharedPlugin;
         HKTextResult *currentLineResult = [textView textResultOfCurrentLine];
         NSString *cmdString = currentLineResult.string;
 
-        // start with "@", means no parameters
+        // line start with "@", means no parameters
         if ([cmdString hasPrefix:@"@"]) {
             // replacement snippet exist
             if ([HKSnippetSetting defaultSetting].snippets[cmdString]) {

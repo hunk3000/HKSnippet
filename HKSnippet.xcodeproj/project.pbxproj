@@ -16,6 +16,7 @@
 		18BA9E501B16ACB300F471AF /* HKSnippetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9E4F1B16ACB300F471AF /* HKSnippetSetting.m */; };
 		B40AE1641C708030004CE9B9 /* HKSnippetEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40AE1621C708030004CE9B9 /* HKSnippetEditViewController.m */; };
 		B40AE1651C708030004CE9B9 /* HKSnippetEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40AE1631C708030004CE9B9 /* HKSnippetEditViewController.xib */; };
+		B47099881C7969F30001329F /* default_snippets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B47099871C7969F30001329F /* default_snippets.plist */; };
 		B4971C731C78C1D600B80D96 /* HKKeyboardEventSender.m in Sources */ = {isa = PBXBuildFile; fileRef = B4971C721C78C1D600B80D96 /* HKKeyboardEventSender.m */; };
 		B4CB74411C7057C60093E911 /* NSString+Snippet.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB743E1C7057C60093E911 /* NSString+Snippet.m */; };
 		B4CB74421C7057C60093E911 /* NSTextView+Snippet.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB74401C7057C60093E911 /* NSTextView+Snippet.m */; };
@@ -38,6 +39,7 @@
 		B40AE1611C708030004CE9B9 /* HKSnippetEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSnippetEditViewController.h; sourceTree = "<group>"; };
 		B40AE1621C708030004CE9B9 /* HKSnippetEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSnippetEditViewController.m; sourceTree = "<group>"; };
 		B40AE1631C708030004CE9B9 /* HKSnippetEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HKSnippetEditViewController.xib; sourceTree = "<group>"; };
+		B47099871C7969F30001329F /* default_snippets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default_snippets.plist; sourceTree = "<group>"; };
 		B4971C711C78C1D600B80D96 /* HKKeyboardEventSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKKeyboardEventSender.h; sourceTree = "<group>"; };
 		B4971C721C78C1D600B80D96 /* HKKeyboardEventSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKKeyboardEventSender.m; sourceTree = "<group>"; };
 		B4CB743D1C7057C60093E911 /* NSString+Snippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Snippet.h"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		18194CB01B169D94007A3FB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B47099871C7969F30001329F /* default_snippets.plist */,
 				18194CB11B169D94007A3FB0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47099881C7969F30001329F /* default_snippets.plist in Resources */,
 				18B907F51B16F086009033BF /* HKSnippetSettingController.xib in Resources */,
 				B40AE1651C708030004CE9B9 /* HKSnippetEditViewController.xib in Resources */,
 			);

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>@button</key>
+	<string>UIButton *&lt;#name#&gt; = [UIButton new];
+&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+[&lt;#name#&gt; setTitleColor:&lt;#title color#&gt; forState:UIControlStateNormal];
+[&lt;#name#&gt; setTitle:&lt;# title #&gt; forState:UIControlStateNormal];
+[&lt;#name#&gt; setImage:&lt;#image#&gt; forState:UIControlStateNormal];</string>
+	<key>@cs</key>
+	<string>static NSString * const &lt;#name#&gt; = @"&lt;#value#&gt;";</string>
+	<key>@de</key>
+	<string>- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}</string>
+	<key>@do</key>
+	<string>do {
+    &lt;#statements#&gt;
+} while (&lt;#condition#&gt;);</string>
+	<key>@enum</key>
+	<string>typedef enum : NSUInteger {
+    &lt;#MyEnumValueA#&gt;,
+    &lt;#MyEnumValueB#&gt;,
+    &lt;#MyEnumValueC#&gt;,
+} &lt;#MyEnum#&gt;;</string>
+	<key>@fb</key>
+	<string>- (UIButton *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        _&lt;#name#&gt; = [UIButton new];
+        _&lt;#name#&gt;.layer.cornerRadius = &lt;#radius#&gt;;
+        _&lt;#name#&gt;.layer.masksToBounds = YES;
+        _&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+        [_&lt;#name#&gt; setTitleColor:&lt;#title color#&gt; forState:UIControlStateNormal];
+        [_&lt;#name#&gt; setTitle:&lt;# title #&gt; forState:UIControlStateNormal];
+        [_&lt;#name#&gt; setImage:&lt;#image#&gt; forState:UIControlStateNormal];
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@fd</key>
+	<string>- (NSString *)description
+{
+    return [NSString stringWithFormat:@"&lt;#format string#&gt;", &lt;#arguments#&gt;];
+}</string>
+	<key>@ff</key>
+	<string>- (&lt;#type#&gt; *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        &lt;#Init Code#&gt;
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@fi</key>
+	<string>- (UIImageView *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        _&lt;#name#&gt; = [UIImageView new];
+        _&lt;#name#&gt;.layer.cornerRadius = &lt;#radius#&gt;;
+        _&lt;#name#&gt;.layer.masksToBounds = YES;
+        _&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+        _&lt;#name#&gt;.image = &lt;#image#&gt;;
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@fl</key>
+	<string>- (UILabel *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        _&lt;#name#&gt; = [UILabel new];
+        _&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+        _&lt;#name#&gt;.textAlignment = NSTextAlignmentCenter;
+        _&lt;#name#&gt;.numberOfLines = 0;
+        _&lt;#name#&gt;.textColor = &lt;#color#&gt;;
+        _&lt;#name#&gt;.font = &lt;#font#&gt;;
+        _&lt;#name#&gt;.text = &lt;#text#&gt;;
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@for</key>
+	<string>for (&lt;#type#&gt; *&lt;#object#&gt; in &lt;#collection#&gt;) {
+    &lt;#statements#&gt;
+}</string>
+	<key>@ft</key>
+	<string>- (UITableView *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        _&lt;#name#&gt; = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+        _&lt;#name#&gt;.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _&lt;#name#&gt;.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        _&lt;#name#&gt;.separatorColor = &lt;#color#&gt;;
+        _&lt;#name#&gt;.delegate = &lt;#table delegate#&gt;;
+        _&lt;#name#&gt;.dataSource = &lt;#table datasource#&gt;;
+
+        [_&lt;#name#&gt; registerClass:[&lt;#class name#&gt; class] forCellReuseIdentifier:&lt;#cellId#&gt;];
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@fv</key>
+	<string>- (UIView *)&lt;#name#&gt; {
+    if(!_&lt;#name#&gt;) {
+        _&lt;#name#&gt; = [UIView new];
+        _&lt;#name#&gt;.backgroundColor = &lt;#color#&gt;;
+    }
+    return _&lt;#name#&gt;;
+}</string>
+	<key>@gmk</key>
+	<string>#pragma mark - Getters &amp; Setters</string>
+	<key>@imageV</key>
+	<string>UIImageView *&lt;#name#&gt; = [UIImageView new];
+&lt;#name#&gt;.layer.cornerRadius = &lt;#radius#&gt;;
+&lt;#name#&gt;.layer.masksToBounds = YES;
+&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+&lt;#name#&gt;.image = &lt;#image#&gt;;</string>
+	<key>@init</key>
+	<string>- (instancetype)init {
+    self = [super init];
+    if (self) {
+        &lt;#statements#&gt;
+    }
+    return self;
+}</string>
+	<key>@kvo</key>
+	<string>- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == &lt;#context#&gt;) {
+        &lt;#code to be executed upon observing keypath#&gt;
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}</string>
+	<key>@label</key>
+	<string>UILabel *&lt;#name#&gt; = [UILabel new];
+&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+&lt;#name#&gt;.textAlignment = NSTextAlignmentCenter;
+&lt;#name#&gt;.numberOfLines = 0;
+&lt;#name#&gt;.textColor = &lt;#color#&gt;;
+&lt;#name#&gt;.font = &lt;#font#&gt;;
+&lt;#name#&gt;.text = &lt;#text#&gt;;</string>
+	<key>@lmk</key>
+	<string>#pragma mark - LifeCycle</string>
+	<key>@log</key>
+	<string>NSLog(@"&lt;#format#&gt;",&lt;#data#&gt;);</string>
+	<key>@ls</key>
+	<string>- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGFloat w = self.frame.size.width;
+    CGFloat h = self.frame.size.height;
+    &lt;#set subview frames#&gt;
+}</string>
+	<key>@lv</key>
+	<string>- (void)loadView {
+    [super loadView];
+    &lt;#set subview frames#&gt;
+}</string>
+	<key>@mk</key>
+	<string>#pragma mark - &lt;#section title#&gt;</string>
+	<key>@modal</key>
+	<string>- (NSString *)apiVersion {
+    return @"1.0";
+}
+
+- (NSString *)methodName {
+    return @“&lt;#api name#&gt;“;
+}
+
+- (BOOL)useAuth {
+    return YES;
+}
+
+- (NSInteger)pageSize {
+    return 20;
+}
+
+- (NSDictionary *)dataParams {
+    return @{&lt;#dictionary for parameters#&gt;};
+}
+
+- (NSMutableArray *)constructDataArray:(NSDictionary *)requestData {
+    NSArray *&lt;#data list#&gt; = requestData[@"data"];
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    for (NSDictionary *dic in &lt;#data list#&gt; ) {
+        &lt;#item class#&gt; *item = [[&lt;#item class#&gt; alloc] init];
+        [item tddAutoSetPropertySafety:dic];
+        [tmpArray addObject:item];
+    }
+    return tmpArray;
+}</string>
+	<key>@nsuser</key>
+	<string>[[NSUserDefaults standardUserDefaults] setObject:&lt;#object#&gt; forKey:&lt;#key#&gt;];</string>
+	<key>@ob</key>
+	<string>[[NSNotificationCenter defaultCenter] addObserver:self
+                                                                    selector:@selector(&lt;#selector#&gt;)
+                                                                        name:&lt;#Notification#&gt;
+                                                                       object:nil];</string>
+	<key>@pa</key>
+	<string>@property (assign) &lt;#type#&gt; &lt;#value#&gt;;</string>
+	<key>@pc</key>
+	<string>@property (copy) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@pmk</key>
+	<string>#pragma mark - Private Method</string>
+	<key>@pna</key>
+	<string>@property (nonatomic, assign) &lt;#type#&gt; &lt;#value#&gt;;</string>
+	<key>@pnc</key>
+	<string>@property (nonatomic, copy) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@pns</key>
+	<string>@property (nonatomic, strong) &lt;#type#&gt; *&lt;#value#&gt;;         // &lt;#comment#&gt;</string>
+	<key>@pnw</key>
+	<string>@property (nonatomic, weak) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@pra</key>
+	<string>@property (assign, readonly) &lt;#type#&gt; &lt;#value#&gt;;</string>
+	<key>@prc</key>
+	<string>@property (copy, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@prna</key>
+	<string>@property (nonatomic, assign, readonly) &lt;#type#&gt; &lt;#value#&gt;;</string>
+	<key>@prnc</key>
+	<string>@property (nonatomic, copy, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@prns</key>
+	<string>@property (nonatomic, strong, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@prnw</key>
+	<string>@property (nonatomic, weak, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@prs</key>
+	<string>@property (strong, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@prw</key>
+	<string>@property (weak, readonly) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@ps</key>
+	<string>@property (strong) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@pw</key>
+	<string>@property (weak) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@ss</key>
+	<string>__strong typeof(weakSelf) strongSelf = weakSelf;</string>
+	<key>@table</key>
+	<string>UITableView *&lt;#name#&gt; = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+&lt;#name#&gt;.backgroundColor = [UIColor clearColor];
+&lt;#name#&gt;.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+&lt;#name#&gt;.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+&lt;#name#&gt;.separatorColor = &lt;#color#&gt;;
+&lt;#name#&gt;.delegate = &lt;#table delegate#&gt;;
+&lt;#name#&gt;.dataSource = &lt;#table datasource#&gt;;
+
+ [&lt;#name#&gt; registerClass:[&lt;#class name#&gt; class] forCellReuseIdentifier:&lt;#cellId#&gt;];</string>
+	<key>@tdd</key>
+	<string>#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return &lt;#rows#&gt;;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:&lt;#CellId#&gt;];
+
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return &lt;#height#&gt;;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+}
+</string>
+	<key>@try</key>
+	<string>@try {
+    &lt;#Code that can potentially throw an exception#&gt;
+}
+@catch (NSException *exception) {
+    &lt;#Handle an exception thrown in the @try block#&gt;
+}
+@finally {
+    &lt;#Code that gets executed whether or not an exception is thrown#&gt;
+}</string>
+	<key>@view</key>
+	<string>UIView *&lt;#name#&gt; = [UIView new];
+&lt;#name#&gt;.backgroundColor = &lt;#color#&gt;;</string>
+	<key>@vl</key>
+	<string>- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    CGFloat w = self.view.frame.size.width;
+    CGFloat h = self.view.frame.size.height;
+    &lt;# set subview frames #&gt;
+}</string>
+	<key>@while</key>
+	<string>while (&lt;#condition#&gt;) {
+    &lt;#statements#&gt;
+}</string>
+	<key>@ws</key>
+	<string>__weak typeof(self) weakSelf = self;</string>
+	<key>^a</key>
+	<string>[[&lt;#Class#&gt; alloc] init];</string>
+	<key>^s</key>
+	<string>[NSString stringWithFormat:@“%@“,&lt;#parameter#&gt;];</string>
+</dict>
+</plist>
