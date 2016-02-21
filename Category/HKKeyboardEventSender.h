@@ -28,7 +28,7 @@
 #import <Carbon/Carbon.h>
 
 
-@interface VVKeyboardEventSender : NSObject
+@interface HKKeyboardEventSender : NSObject
 -(void) beginKeyBoradEvents;
 -(void) sendKeyCode:(NSInteger)keyCode;
 -(void) sendKeyCode:(NSInteger)keyCode withModifierCommand:(BOOL)command

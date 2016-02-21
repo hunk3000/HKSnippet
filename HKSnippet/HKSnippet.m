@@ -80,7 +80,7 @@ static HKSnippet *sharedPlugin;
         NSTextView *textView = (NSTextView *)[notification object];
         HKTextResult *currentLineResult = [textView textResultOfCurrentLine];
         NSString *cmdString = currentLineResult.string;
-        
+        __weak typeof(self) weakSelf = self;
         // start with "@", means no parameters
         if ([cmdString hasPrefix:@"@"]) {
             // replacement snippet exist
@@ -91,6 +91,19 @@ static HKSnippet *sharedPlugin;
                     withParameters:nil];
             }
         } else {
+            // Replace part (start with ^) exist
+            if ([cmdString containsString:@"^"]) {
+                NSUInteger replaceIndex = [cmdString rangeOfString:@"^"].location;
+                NSString *replaceTrigger = [cmdString substringFromIndex:replaceIndex];
+                NSString *snippet = [HKSnippetSetting defaultSetting].snippets[replaceTrigger];
+                if (snippet) {
+                    [self pasteSnippet:snippet
+                       byTriggerString:replaceTrigger
+                            toTextView:textView
+                        withParameters:nil];
+                }
+            }
+            
             // Get parameters
             NSArray *cmdArr = [cmdString componentsSeparatedByString:@"@"];
             if (cmdArr.count > 1) {
@@ -120,7 +133,6 @@ static HKSnippet *sharedPlugin;
         NSInteger windowIndex = [mainMenu indexOfItemWithTitle:@"Window"];
         [mainMenu insertItem:pluginsMenuItem atIndex:windowIndex];
     }
-    
     NSMenuItem *mainMenuItem = [[NSMenuItem alloc] initWithTitle:@"HKSnippet"
                                                           action:@selector(showSettingWindow)
                                                    keyEquivalent:@""];
@@ -164,7 +176,7 @@ static HKSnippet *sharedPlugin;
         [self resetShouldReplace];
         return;
     }
-
+    
     NSUInteger length = triggerString.length;
     // save pasteboard string for restore
     NSString *oldPasteString = [HKSnippet getPasteboardString];
@@ -200,14 +212,15 @@ static HKSnippet *sharedPlugin;
             if (oldPasteString) {
                 [HKSnippet setPasteboardString:oldPasteString];
             }
-            
-            //Set cursor before the inserted snippet. So we can use tab to begin edit.
-            int snippetLength = (int)snippet.length;
-            [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - snippetLength, 0)];
-            
-            //Send a 'tab' after insert the snippet. For our lazy programmers. :-)
-            [kes sendKeyCode:kVK_Tab];
-            [kes endKeyBoradEvents];
+            if ([snippet containsString:@"<#"]) {
+                //Set cursor before the inserted snippet. So we can use tab to begin edit.
+                int snippetLength = (int)snippet.length;
+                [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - snippetLength, 0)];
+                
+                //Send a 'tab' after insert the snippet. For our lazy programmers. :-)
+                [kes sendKeyCode:kVK_Tab];
+                [kes endKeyBoradEvents];
+            }
 
             weakSelf.shouldReplace = NO;
             //Invalidate the finish signal, in case you set it to do some other thing.
@@ -218,7 +231,7 @@ static HKSnippet *sharedPlugin;
     }];
     [self performSelector:@selector(resetShouldReplace)
                withObject:nil
-               afterDelay:5.0f];
+               afterDelay:4.0f];
 }
 
 + (NSString *)replacedSnippet:(NSString *)orgSnippet

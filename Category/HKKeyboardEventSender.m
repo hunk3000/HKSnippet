@@ -24,16 +24,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "VVKeyboardEventSender.h"
+#import "HKKeyboardEventSender.h"
 
-@interface VVKeyboardEventSender()
+@interface HKKeyboardEventSender()
 {
     CGEventSourceRef _source;
     CGEventTapLocation _location;
 }
 @end
 
-@implementation VVKeyboardEventSender
+@implementation HKKeyboardEventSender
 -(void) beginKeyBoradEvents
 {
     _source = CGEventSourceCreate(kCGEventSourceStateCombinedSessionState);
