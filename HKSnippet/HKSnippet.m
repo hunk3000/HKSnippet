@@ -11,7 +11,7 @@
 #import "HKSnippetSetting.h"
 #import "NSTextView+Snippet.h"
 #import "HKSnippetSettingController.h"
-#import "VVKeyboardEventSender.h"
+#import "HKKeyboardEventSender.h"
 
 static HKSnippet *sharedPlugin;
 
@@ -80,7 +80,7 @@ static HKSnippet *sharedPlugin;
         NSTextView *textView = (NSTextView *)[notification object];
         HKTextResult *currentLineResult = [textView textResultOfCurrentLine];
         NSString *cmdString = currentLineResult.string;
-        __weak typeof(self) weakSelf = self;
+
         // start with "@", means no parameters
         if ([cmdString hasPrefix:@"@"]) {
             // replacement snippet exist
@@ -185,7 +185,7 @@ static HKSnippet *sharedPlugin;
     [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - length, length)];
 
     //Begin to simulate keyborad pressing
-    VVKeyboardEventSender *kes = [[VVKeyboardEventSender alloc] init];
+    HKKeyboardEventSender *kes = [[HKKeyboardEventSender alloc] init];
     [kes beginKeyBoradEvents];
     
     //Cmd+delete Delete current line
