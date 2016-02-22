@@ -50,10 +50,10 @@ NSString * const kHKSnippetEnabled = @"enabled";
     static HKSnippetSetting *defaultSetting;
     static dispatch_once_t once;
     dispatch_once(&once, ^ {
-        defaultSetting = [[HKSnippetSetting alloc] init];
+        defaultSetting = [[[self class] alloc] init];
         
         NSDictionary *defaults = @{kHKSnippetEnabled: @YES,
-                                   kHKSnippetsKey : defaultSetting.snippets ? defaultSetting.snippets : @{}};
+                                   kHKSnippetsKey : defaultSetting.snippets ?: @{}};
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     });
     return defaultSetting;
@@ -69,7 +69,7 @@ NSString * const kHKSnippetEnabled = @"enabled";
 }
 
 - (void)sychronizeSetting {
-    NSMutableDictionary *snippets = [HKSnippetSetting defaultSetting].snippets;
+    NSMutableDictionary *snippets = [[self class] defaultSetting].snippets;
     [[NSUserDefaults standardUserDefaults] setObject:snippets forKey:kHKSnippetsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -87,7 +87,7 @@ NSString * const kHKSnippetEnabled = @"enabled";
 
 - (NSDictionary *)defaultConfig {
     NSDictionary *config = [[NSUserDefaults standardUserDefaults] objectForKey:kHKSnippetsKey];
-    if (config.count > 0) {
+    if (0 < config.count) {
         return config;
     }
 

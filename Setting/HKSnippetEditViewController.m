@@ -9,6 +9,8 @@
 #import "HKSnippetEditViewController.h"
 #import "HKSnippetSetting.h"
 
+typedef void(^Void_Block)(void);
+
 @interface HKSnippetEditViewController ()
 
 @end
@@ -55,8 +57,8 @@
 
 #pragma mark - Private Method
 - (void)showConfirmWithMessage:(NSString *)message
-                positiveAction:(void(^)(void))postiveAction
-                negativeAction:(void(^)(void))negativeAction {
+                positiveAction:(Void_Block)postiveAction
+                negativeAction:(Void_Block)negativeAction {
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"YES"];

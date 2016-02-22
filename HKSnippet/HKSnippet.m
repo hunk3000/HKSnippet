@@ -43,8 +43,8 @@ static HKSnippet *sharedPlugin;
 
 - (id)initWithBundle:(NSBundle *)plugin {
     if (self = [super init]) {
-        self.bundle = plugin;
-        self.shouldReplace = YES;
+        _bundle = plugin;
+        _shouldReplace = YES;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(textStorageDidChange:)
                                                      name:NSTextDidChangeNotification
@@ -106,13 +106,13 @@ static HKSnippet *sharedPlugin;
             
             // Get parameters
             NSArray *cmdArr = [cmdString componentsSeparatedByString:@"@"];
-            if (cmdArr.count > 1) {
+            if (1 < cmdArr.count) {
                 NSString *parameterString = cmdArr[0];
                 NSString *triggerString = [NSString stringWithFormat:@"@%@",cmdArr[1]];
                 NSArray *parameters = [parameterString componentsSeparatedByString:@","];
                 NSString *snippet = [HKSnippetSetting defaultSetting].snippets[triggerString];
                 if (snippet) {
-                    [self pasteSnippet:[HKSnippet replacedSnippet:snippet withParameters:parameters]
+                    [self pasteSnippet:[[self class] replacedSnippet:snippet withParameters:parameters]
                        byTriggerString:cmdString
                             toTextView:textView
                         withParameters:parameters];
@@ -149,7 +149,7 @@ static HKSnippet *sharedPlugin;
 + (void)setPasteboardString:(NSString *)aString {
     NSPasteboard *thePasteboard = [NSPasteboard generalPasteboard];
     [thePasteboard clearContents];
-    [thePasteboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
+    [thePasteboard declareTypes:@[NSStringPboardType] owner:nil];
     [thePasteboard setString:aString forType:NSStringPboardType];
 }
 
@@ -179,8 +179,8 @@ static HKSnippet *sharedPlugin;
     
     NSUInteger length = triggerString.length;
     // save pasteboard string for restore
-    NSString *oldPasteString = [HKSnippet getPasteboardString];
-    [HKSnippet setPasteboardString:snippet];
+    NSString *oldPasteString = [[self class] getPasteboardString];
+    [[self class] setPasteboardString:snippet];
     
     [textView setSelectedRange:NSMakeRange(textView.currentCurseLocation - length, length)];
 
@@ -210,7 +210,7 @@ static HKSnippet *sharedPlugin;
             
             //Restore previois patse board content
             if (oldPasteString) {
-                [HKSnippet setPasteboardString:oldPasteString];
+                [[self class] setPasteboardString:oldPasteString];
             }
             if ([snippet containsString:@"<#"]) {
                 //Set cursor before the inserted snippet. So we can use tab to begin edit.

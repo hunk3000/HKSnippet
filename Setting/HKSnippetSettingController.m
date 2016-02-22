@@ -12,9 +12,9 @@
 
 @interface HKSnippetSettingController ()<NSTableViewDataSource, NSTableViewDelegate>
 
-@property (weak) IBOutlet NSButton *btnEnabled;
-@property (weak) IBOutlet NSTableView *tableView;
-@property (weak) IBOutlet NSSearchField *searchField;
+@property (nonatomic, weak) IBOutlet NSButton *btnEnabled;
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, weak) IBOutlet NSSearchField *searchField;
 
 @property (nonatomic, strong) HKSnippetEditViewController *snippetEditViewController;
 @property (nonatomic, strong) NSMutableArray *listOfKeys;
@@ -35,6 +35,12 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.btnEnabled.state = (NSCellStateValue)[[HKSnippetSetting defaultSetting] enabled];
+}
+
+- (void)dealloc {
+    _tableView.delegate = nil;
+    _tableView.dataSource = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UI Action
@@ -122,7 +128,7 @@
         return [obj1 compare:obj2];
     }];
     [_listOfKeys removeAllObjects];
-    if (filter.length > 0) {
+    if (0 < filter.length) {
         for (NSString *key in sortedKeys) {
             if ([key containsString:filter]) {
                 [_listOfKeys addObject:key];
@@ -139,7 +145,6 @@
                                         snippet:(NSString *)snippet
                                          sender:(id)sender {
     _snippetEditViewController = [[HKSnippetEditViewController alloc] initWithWindowNibName:@"HKSnippetEditViewController"];
-    [_snippetEditViewController loadWindow];
     
     NSRect windowFrame = [[self window] frame];
     NSRect prefsFrame = [[_snippetEditViewController window] frame];
@@ -162,7 +167,7 @@
             [[HKSnippetSetting defaultSetting].snippets removeObjectForKey:oldTrigger];
         }
         
-        [[HKSnippetSetting defaultSetting].snippets setObject:snippet forKey:newTrigger];
+        [HKSnippetSetting defaultSetting].snippets[newTrigger] = snippet;
         [[HKSnippetSetting defaultSetting] sychronizeSetting];
         [weakSelf reloadDataWithKeyFilter:nil];
     };

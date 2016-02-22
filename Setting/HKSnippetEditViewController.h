@@ -12,10 +12,10 @@ typedef void(^save_snippet_block)(NSString *oldTrigger, NSString *newTrigger, NS
 
 @interface HKSnippetEditViewController : NSWindowController
 
-@property (weak) IBOutlet NSTextField *triggerTextField;
-@property (unsafe_unretained) IBOutlet NSTextView *snippetTextView;
-@property (nonatomic, strong) NSString *triggerString;
-@property (nonatomic, strong) NSString *snippet;
+@property (nonatomic, weak) IBOutlet NSTextField *triggerTextField;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextView *snippetTextView;
+@property (nonatomic, copy) NSString *triggerString;
+@property (nonatomic, copy) NSString *snippet;
 @property (nonatomic, copy) save_snippet_block saveBlock;
 
 - (IBAction)saveSnippet:(id)sender;
