@@ -29,20 +29,21 @@ UIColor *beijingColor = [UIColor greenColor];
 
 ```
 #pragma mark - Lifecycle  
-- (instancetype)init {}  
-- (void)dealloc {}  
-- (void)viewDidLoad {}  
-- (void)viewWillAppear:(BOOL)animated {}  
-- (void)didReceiveMemoryWarning {} 
+- (instancetype)init {}
+- (void)dealloc {}
+- (void)viewDidLoad {}
+- (void)viewWillAppear:(BOOL)animated {}
+- (void)didReceiveMemoryWarning {}
 
 #pragma mark - Public Method 
-- (void)publicMethod {}  
+- (void)publicMethod {}
 
 #pragma mark - Private Method
-- (void)privateMethod {}  
+- (void)privateMethod {}
 
 #pragma mark - Protocol conformance  
-#pragma mark - UITextFieldDelegate ... 
+#pragma mark - UITextFieldDelegate
+#pragma mark - Other Delegate...
 #pragma mark - UITableViewDataSource  
 #pragma mark - UITableViewDelegate  
 
@@ -52,8 +53,8 @@ UIColor *beijingColor = [UIColor greenColor];
 
 ###空格
 
-－ 缩进使用4个空格，确保在Xcode偏好设置来设置。
-－ 方法大括号和其他大括号(if/else/switch/while 等.) 总是在同一行语句打开但在新行中关闭。
+* 缩进使用4个空格，确保在Xcode偏好设置来设置。
+* 方法大括号和其他大括号(if/else/switch/while 等.) 总是在同一行语句打开但在新行中关闭。
 
 
 命名规则 
