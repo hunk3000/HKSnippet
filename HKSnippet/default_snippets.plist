@@ -2,12 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>@ani</key>
+	<string>[UIView animateWithDuration:&lt;#(NSTimeInterval)#&gt;
+                 animations:^{
+                     &lt;#code#&gt;
+                 } completion:^(BOOL finished) {
+                     &lt;#code#&gt;
+                 }];</string>
 	<key>@button</key>
 	<string>UIButton *&lt;#name#&gt; = [UIButton new];
 &lt;#name#&gt;.backgroundColor = [UIColor clearColor];
 [&lt;#name#&gt; setTitleColor:&lt;#title color#&gt; forState:UIControlStateNormal];
 [&lt;#name#&gt; setTitle:&lt;# title #&gt; forState:UIControlStateNormal];
 [&lt;#name#&gt; setImage:&lt;#image#&gt; forState:UIControlStateNormal];</string>
+	<key>@cf</key>
+	<string>static CGFloat const &lt;#name#&gt; = &lt;#value#&gt;;</string>
 	<key>@cs</key>
 	<string>static NSString * const &lt;#name#&gt; = @"&lt;#value#&gt;";</string>
 	<key>@de</key>
@@ -116,6 +125,12 @@
     }
     return self;
 }</string>
+	<key>@it</key>
+	<string>@interface &lt;#name#&gt; ()
+
+&lt;#Property#&gt;
+
+@end</string>
 	<key>@kvo</key>
 	<string>- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -151,13 +166,13 @@
 }</string>
 	<key>@mk</key>
 	<string>#pragma mark - &lt;#section title#&gt;</string>
-	<key>@modal</key>
+	<key>@model</key>
 	<string>- (NSString *)apiVersion {
     return @"1.0";
 }
 
 - (NSString *)methodName {
-    return @“&lt;#api name#&gt;“;
+    return @"";
 }
 
 - (BOOL)useAuth {
@@ -169,17 +184,17 @@
 }
 
 - (NSDictionary *)dataParams {
-    return @{&lt;#dictionary for parameters#&gt;};
+    return @{};
 }
 
 - (NSMutableArray *)constructDataArray:(NSDictionary *)requestData {
-    NSArray *&lt;#data list#&gt; = requestData[@"data"];
     NSMutableArray *tmpArray = [NSMutableArray array];
-    for (NSDictionary *dic in &lt;#data list#&gt; ) {
-        &lt;#item class#&gt; *item = [[&lt;#item class#&gt; alloc] init];
-        [item tddAutoSetPropertySafety:dic];
-        [tmpArray addObject:item];
-    }
+//    NSArray *&lt;#data list#&gt; = requestData[@"data"];
+//    for (NSDictionary *dic in &lt;#data list#&gt; ) {
+//        &lt;#item class#&gt; *item = [[&lt;#item class#&gt; alloc] init];
+//        [item tddAutoSetPropertySafety:dic];
+//        [tmpArray addObject:item];
+//    }
     return tmpArray;
 }</string>
 	<key>@nsuser</key>
@@ -200,7 +215,7 @@
 	<key>@pnc</key>
 	<string>@property (nonatomic, copy) &lt;#type#&gt; *&lt;#value#&gt;;</string>
 	<key>@pns</key>
-	<string>@property (nonatomic, strong) &lt;#type#&gt; *&lt;#value#&gt;;         // &lt;#comment#&gt;</string>
+	<string>@property (nonatomic, strong) &lt;#type#&gt; *&lt;#value#&gt;;</string>
 	<key>@pnw</key>
 	<string>@property (nonatomic, weak) &lt;#type#&gt; *&lt;#value#&gt;;</string>
 	<key>@pra</key>
@@ -223,6 +238,22 @@
 	<string>@property (strong) &lt;#type#&gt; *&lt;#value#&gt;;</string>
 	<key>@pw</key>
 	<string>@property (weak) &lt;#type#&gt; *&lt;#value#&gt;;</string>
+	<key>@qf</key>
+	<string>- (void)&lt;#name#&gt; {
+
+}
+</string>
+	<key>@singleton</key>
+	<string>+ (instancetype)sharedManager {
+    static &lt;#Class#&gt; *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        if (!_sharedInstance) {
+            _sharedInstance = [[&lt;#Class#&gt; alloc] init];
+        }
+    });
+    return _sharedInstance;
+}</string>
 	<key>@ss</key>
 	<string>__strong typeof(weakSelf) strongSelf = weakSelf;</string>
 	<key>@table</key>
@@ -287,6 +318,6 @@
 	<key>^a</key>
 	<string>[[&lt;#Class#&gt; alloc] init];</string>
 	<key>^s</key>
-	<string>[NSString stringWithFormat:@“%@“,&lt;#parameter#&gt;];</string>
+	<string>[NSString stringWithFormat:@"%@",&lt;#value#&gt;];</string>
 </dict>
 </plist>
