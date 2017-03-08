@@ -105,12 +105,13 @@ static HKSnippet *sharedPlugin;
             }
             
             // Get parameters
-            NSArray *cmdArr = [cmdString componentsSeparatedByString:@"@"];
-            if (1 < cmdArr.count) {
-                NSString *parameterString = cmdArr[0];
-                NSString *triggerString = [NSString stringWithFormat:@"@%@",cmdArr[1]];
-                NSArray *parameters = [parameterString componentsSeparatedByString:@","];
-                NSString *snippet = [HKSnippetSetting defaultSetting].snippets[triggerString];
+            NSRange r = [cmdString rangeOfString:@"@" options:NSBackwardsSearch];
+            if (r.location > 0 && r.length == 1) {
+                NSString *parameterString = [cmdString substringToIndex:r.location];
+                NSString *triggerString = [cmdString substringFromIndex:(r.location)];
+                NSArray *parameters = [parameterString componentsSeparatedByString:@"|"];
+                NSDictionary *snippets = [HKSnippetSetting defaultSetting].snippets;
+                NSString *snippet = snippets[triggerString];
                 if (snippet) {
                     [self pasteSnippet:[[self class] replacedSnippet:snippet withParameters:parameters]
                        byTriggerString:cmdString
@@ -121,6 +122,7 @@ static HKSnippet *sharedPlugin;
         }
     }
 }
+
 
 #pragma mark - UI
 - (void)addMenuItem {
@@ -231,7 +233,7 @@ static HKSnippet *sharedPlugin;
     }];
     [self performSelector:@selector(resetShouldReplace)
                withObject:nil
-               afterDelay:4.0f];
+               afterDelay:3.0f];
 }
 
 + (NSString *)replacedSnippet:(NSString *)orgSnippet
@@ -240,15 +242,30 @@ static HKSnippet *sharedPlugin;
     snippet = [snippet stringByReplacingOccurrencesOfString:@"<#name#>"
                                                  withString:parameter[0]];
     for (NSString *p in parameter) {
-        // replace font
-        if ([p containsString:@"font"] || [p containsString:@"Font"] || [p containsString:@"FONT"]) {
+        NSString *uppercaseP = p.uppercaseString;
+        
+        if ([uppercaseP containsString:@"FONT"]) {
             snippet = [snippet stringByReplacingOccurrencesOfString:@"<#font#>"
                                                          withString:p];
+            continue;
         }
         // replace color
-        if ([p containsString:@"color"] || [p containsString:@"Color"] || [p containsString:@"COLOR"]) {
+        if ([uppercaseP containsString:@"COLOR"]) {
             snippet = [snippet stringByReplacingOccurrencesOfString:@"<#color#>"
                                                          withString:p];
+            continue;
+        }
+        // replace image
+        if ([uppercaseP containsString:@"UIIMAGE"]) {
+            snippet = [snippet stringByReplacingOccurrencesOfString:@"<#image#>"
+                                                         withString:p];
+            continue;
+        }
+        // replace selector
+        if ([uppercaseP containsString:@"SELECTOR"]) {
+            snippet = [snippet stringByReplacingOccurrencesOfString:@"<#selector#>"
+                                                         withString:p];
+            continue;
         }
     }
     return snippet;
